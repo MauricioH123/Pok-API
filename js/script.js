@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let data = await response.json();
             console.log(data.name.toUpperCase());
             alert(`Nombre del Pokémon: ${data.name.toUpperCase()}`);
+
+            let abilitiesList = data.abilities.map(ability => ability.ability.name);
+            alert(`Habilidades del Pokémon: ${abilitiesList.join(', ')}`);
+
         } catch (error) {
             console.error(error);
             alert(`Error: ${error.message}`);
