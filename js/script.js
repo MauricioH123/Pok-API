@@ -58,20 +58,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    function crearTarjetas(cantidad){
-        for(let i = 1; i <= cantidad; i++){
-            const nuevaTarjeta = trajetaOriginal.cloneNode("true");
-            nuevaTarjeta.id = `tarjetaPokenmon-${i}`;
-            const titulo =  nuevaTarjeta.querySelector(".card-title");
-            const texto = nuevaTarjeta.querySelector(".card-text");
-            const imagen = nuevaTarjeta.querySelector(".card-img-top");
+    async function crearTarjetas(){
+        try{
+            const nombres = await todosPokemones();
 
-            titulo.textContent = `Tarjeta ${i}`;
-            texto.textContent = `Este es el contenido personalizado de la tarjeta número ${i}.`;
-            imagen.src = ``; 
+            nombres.forEach((nombre, index )=> {
 
-            contenedor.appendChild(nuevaTarjeta);
+                const nuevaTarjeta = trajetaOriginal.cloneNode(true);
+                
+                nuevaTarjeta.id = `tarjetaPokemon-${index + 1}`;
+                const titulo = nuevaTarjeta.querySelector(".card-title");
+                const texto = nuevaTarjeta.querySelector(".card-text");
+                const imagen = nuevaTarjeta.querySelector(".card-img-top");
+
+                titulo.textContent = `${nombre}`;
+                texto.textContent  = `Este es el Pokémon: ${nombre}.`;
+                imagen.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`; // Ejemplo de imagen desde PokeAPI
+                
+                contenedor.appendChild(nuevaTarjeta);
+            });
+
+        }catch(error){
+            console.error("Error al crear tarjetas:", error);
         }
+        
     }
+
+    crearTarjetas()
     
 });
