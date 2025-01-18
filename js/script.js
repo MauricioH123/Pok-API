@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("enviar").addEventListener("click", async () => {
+
+    function buscarPokemon(){
+          document.getElementById("enviar").addEventListener("click", async () => {
         const pokemonName = document.getElementById("nombre").value.toLowerCase();
         const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
 
@@ -24,8 +26,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    }
+
+    buscarPokemon();
+  
     const contenedor = document.getElementById("tarjetas");
     const trajetaOriginal = document.getElementById("tarjetaPokenmon");
+
+    async function todosPokemones(){
+
+        const datos = await fetch(`https://pokeapi.co/api/v2/pokedex`);
+        const respuestas = await datos.json();
+        console.log(respuestas.results.length + 1);
+        const url = new URL(respuestas.results[0].url);
+        const pokemones = await fetch(url);
+        const respuestaN = await pokemones.json()
+        const nombreP = [];
+        for(let i = 0; i <= respuestas.results.length; i++){
+            // console.log(respuestaN.pokemon_entries[i].pokemon_species.name);
+            nombreP[i] = respuestaN.pokemon_entries[i].pokemon_species.name 
+        }
+        
+        console.log(nombreP);
+        return nombreP;
+
+    }
+
+    todosPokemones();
 
     function crearTarjetas(cantidad){
         for(let i = 1; i <= cantidad; i++){
@@ -37,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             titulo.textContent = `Tarjeta ${i}`;
             texto.textContent = `Este es el contenido personalizado de la tarjeta número ${i}.`;
-            imagen.src = `https://via.placeholder.com/150?text=Tarjeta+${i}`; 
+            imagen.src = ``; 
 
             contenedor.appendChild(nuevaTarjeta);
         }
