@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     function buscarPokemon(){
-          document.getElementById("enviar").addEventListener("click", async () => {
+          document.getElementById("buscar").addEventListener("click", async () => {
         const pokemonName = document.getElementById("nombre").value.toLowerCase();
         const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
 
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     buscarPokemon();
   
-    const contenedor = document.getElementById("tarjetas");
-    const trajetaOriginal = document.getElementById("tarjetaPokenmon");
+    const contenedor = document.getElementById("contenedor");
+    const trajetaOriginal = document.getElementById("tarjetaPokemon");
 
     async function todosPokemones(){
 
@@ -67,9 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const nuevaTarjeta = trajetaOriginal.cloneNode(true);
                 
                 nuevaTarjeta.id = `tarjetaPokemon-${index + 1}`;
-                const titulo = nuevaTarjeta.querySelector(".card-title");
-                const texto = nuevaTarjeta.querySelector(".card-text");
-                const imagen = nuevaTarjeta.querySelector(".card-img-top");
+                const titulo = nuevaTarjeta.querySelector("#nombreP");
+                const texto = nuevaTarjeta.querySelector("#textoP");
+                const imagen = nuevaTarjeta.querySelector("#imagenP");
 
                 titulo.textContent = `${nombre}`;
                 texto.textContent  = `Este es el Pokémon: ${nombre}.`;
