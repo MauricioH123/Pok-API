@@ -23,4 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
             alert(`Error: ${error.message}`);
         }
     });
+
+    const contenedor = document.getElementById("tarjetas");
+    const trajetaOriginal = document.getElementById("tarjetaPokenmon");
+
+    function crearTarjetas(cantidad){
+        for(let i = 1; i <= cantidad; i++){
+            const nuevaTarjeta = trajetaOriginal.cloneNode("true");
+            nuevaTarjeta.id = `tarjetaPokenmon-${i}`;
+            const titulo =  nuevaTarjeta.querySelector(".card-title");
+            const texto = nuevaTarjeta.querySelector(".card-text");
+            const imagen = nuevaTarjeta.querySelector(".card-img-top");
+
+            titulo.textContent = `Tarjeta ${i}`;
+            texto.textContent = `Este es el contenido personalizado de la tarjeta número ${i}.`;
+            imagen.src = `https://via.placeholder.com/150?text=Tarjeta+${i}`; 
+
+            contenedor.appendChild(nuevaTarjeta);
+        }
+    }
+
+    crearTarjetas(10);
+    
 });
