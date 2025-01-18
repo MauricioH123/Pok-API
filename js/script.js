@@ -35,24 +35,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function todosPokemones(){
 
-        const datos = await fetch(`https://pokeapi.co/api/v2/pokedex`);
-        const respuestas = await datos.json();
-        console.log(respuestas.results.length + 1);
-        const url = new URL(respuestas.results[0].url);
-        const pokemones = await fetch(url);
-        const respuestaN = await pokemones.json()
-        const nombreP = [];
-        for(let i = 0; i <= respuestas.results.length; i++){
-            // console.log(respuestaN.pokemon_entries[i].pokemon_species.name);
-            nombreP[i] = respuestaN.pokemon_entries[i].pokemon_species.name 
+        try {
+            // Fetch principal para obtener la lista de pokédex
+            const datos = await fetch(`https://pokeapi.co/api/v2/pokedex`);
+            const respuestas = await datos.json();
+    
+            // Obtener la URL de la primera Pokédex
+            const url = respuestas.results[0].url;
+            const pokemones = await fetch(url);
+            const respuestaN = await pokemones.json();
+    
+            // Crear el array de nombres de Pokémon
+            const nombreP = respuestaN.pokemon_entries.map(entry => entry.pokemon_species.name);
+    
+            return nombreP; // Devolver el array de nombres
+        } catch (error) {
+            console.error("Error al obtener los datos:", error);
+            return []; // En caso de error, devolver un array vacío
         }
-        
-        console.log(nombreP);
-        return nombreP;
 
     }
 
-    todosPokemones();
+
 
     function crearTarjetas(cantidad){
         for(let i = 1; i <= cantidad; i++){
@@ -69,7 +73,5 @@ document.addEventListener("DOMContentLoaded", function () {
             contenedor.appendChild(nuevaTarjeta);
         }
     }
-
-    crearTarjetas(10);
     
 });
