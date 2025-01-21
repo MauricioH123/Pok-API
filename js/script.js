@@ -89,11 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const titulo = nuevaTarjeta.querySelector("#nombreP");
                 const texto = nuevaTarjeta.querySelector("#textoP");
                 const imagen = nuevaTarjeta.querySelector("#imagenP");
+                const linkPokemon = nuevaTarjeta.querySelector("#linkP");
 
                 titulo.textContent = pokemon.name;
                 texto.textContent = `Este es el Pokémon: ${pokemon.name}.`;
                 imagen.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(pagina - 1) * pokemonesPorPagina + index + 1}.png`;
-                imagen.href = ``;
+                linkPokemon.href = `/Pok-API/views/detallePokemon.html?id=${(pagina - 1) * pokemonesPorPagina + index + 1}`;
                 contenedor.appendChild(nuevaTarjeta);
             });
 
@@ -186,7 +187,5 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
 
     // crearTarjetas()
-
-
 
 });
