@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             contenedor.innerHTML = '';  // Limpiar el contenedor antes de agregar nuevas tarjetas
             const pokemones = await obtenerPokemones(pagina);
-            const baseUrl = window.location.origin;
+            const baseUrl =`${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}`;
 
             pokemones.forEach((pokemon, index) => {
                 const nuevaTarjeta = tarjetaOriginal.cloneNode(true);
