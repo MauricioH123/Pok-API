@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             contenedor.innerHTML = '';  // Limpiar el contenedor antes de agregar nuevas tarjetas
             const pokemones = await obtenerPokemones(pagina);
+            const baseUrl = window.location.origin;
 
             pokemones.forEach((pokemon, index) => {
                 const nuevaTarjeta = tarjetaOriginal.cloneNode(true);
@@ -96,9 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 titulo.textContent = pokemon.name;
                 texto.textContent = `Este es el Pokémon: ${pokemon.name}.`;
                 imagen.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(pagina - 1) * pokemonesPorPagina + index + 1}.png`;
-                linkPokemon.href = `/Pok-API/views/detallePokemon.html?id=${(pagina - 1) * pokemonesPorPagina + index + 1}`;
-                linkPokemon2.href = `/Pok-API/views/detallePokemon.html?id=${(pagina - 1) * pokemonesPorPagina + index + 1}`;
-                linkPokemon3.href = `/Pok-API/views/detallePokemon.html?id=${(pagina - 1) * pokemonesPorPagina + index + 1}`;
+                linkPokemon.href = `${baseUrl}/views/detallePokemon.html?id=${(pagina - 1) * pokemonesPorPagina + index + 1}`;
+                linkPokemon2.href = `${baseUrl}/views/detallePokemon.html?id=${(pagina - 1) * pokemonesPorPagina + index + 1}`;
+                linkPokemon3.href = `${baseUrl}/views/detallePokemon.html?id=${(pagina - 1) * pokemonesPorPagina + index + 1}`;
                 contenedor.appendChild(nuevaTarjeta);
             });
 
