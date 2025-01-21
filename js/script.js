@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let paginaActual = 1;
     const pokemonesPorPagina = 20;
     const contenedor = document.getElementById("contenedor");
-    const trajetaOriginal = document.getElementById("tarjetaPokemon");
+    const tarjetaOriginal = document.getElementById("tarjetaPokemon");
     const paginaNav = document.getElementById("paginaNav");
 
     // async function todosPokemones(){
@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const totalPokemones = 1118;  // Total de Pokémon en la Pokédex
     const totalPaginas = Math.ceil(totalPokemones / pokemonesPorPagina); // Calcular el número total de páginas
-    const tarjetaOriginal = document.getElementById("tarjetaPokemon");
 
 
     // Función para obtener los Pokémon de una página
@@ -94,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 titulo.textContent = pokemon.name;
                 texto.textContent = `Este es el Pokémon: ${pokemon.name}.`;
                 imagen.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${(pagina - 1) * pokemonesPorPagina + index + 1}.png`;
-
+                imagen.href = ``;
                 contenedor.appendChild(nuevaTarjeta);
             });
 

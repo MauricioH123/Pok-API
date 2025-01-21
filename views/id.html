@@ -4,95 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIBLIA DE POKEMONES</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>La Biblia de Pokémon</title>
+    <link rel="stylesheet" href="../css/output.css">
+    <script src="../node_modules/flowbite/dist/flowbite.min.js" defer></script>
 </head>
 
-<body>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px; height: 100vh;">
-            <h4 class="text-center">Menú</h4>
-            <!-- Search Bar -->
-            <form class="d-flex mb-3" id="buscarPokemon">
-                <input class="form-control me-2" id="nombre" type="search" placeholder="Buscar" aria-label="Buscar">
-                <button class="btn btn-outline-primary" type="button" id="enviar">🔍</button>
-            </form>
-            <!-- Navigation Links -->
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="./index.html" class="nav-link" aria-current="page">Inicio</a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link">Mejores Pokemones</a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link">Ayuda</a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link">Cerrar Sesión</a>
-                </li>
-            </ul>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-gray-800">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="./index.html" class="flex items-center">
+                        <img class="h-8 w-auto"
+                            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Logo">
+                        <span class="text-white text-lg font-bold ml-2">Pokédex</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden sm:flex space-x-4">
+                    <a href="./index.html"
+                        class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                    <a href="#"
+                        class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Buscar</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="sm:hidden">
+                    <button id="mobile-menu-button" aria-label="Abrir menu"
+                        class="text-gray-400 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="p-4 w-100">
-            <div class="row">
-                <div id="carouselExample" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="../img/file.jpg" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../img/519070-final.png" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden hidden">
+            <div class="space-y-1 px-2 pb-3 pt-2">
+                <a href="./index.html"
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#"
+                    class="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium">Buscar</a>
             </div>
+        </div>
+    </nav>
 
-            <div class="row mt-3" id="tarjetas">
-                <div class="col m-2" id="tarjetaPokenmon">
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
+    <!-- Hero Section -->
+    <section class="bg-center bg-no-repeat bg-cover bg-[url('../img/SI_Pokemon.jpg')] bg-gray-700 bg-blend-multiply">
+        <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl mb-4">La Biblia de
+                Pokémon</h1>
+            <p class="text-lg font-normal text-gray-300 lg:text-xl mb-8 sm:px-16 lg:px-48">Aquí puedes encontrar toda la
+                información sobre cualquier Pokémon que exista.</p>
+            <form class="max-w-md mx-auto">
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
                     </div>
+                    <input type="search" id="nombre"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Buscar Pokemon" required />
+                    <button type="submit" id="buscar"
+                        class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
                 </div>
+            </form>
+        </div>
+    </section>
 
+    
 
+<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+    </a>
+    <div class="px-5 pb-5">
+        <a href="#">
+            <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+        </a>
+        <div class="flex items-center mt-2.5 mb-5">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+                <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
             </div>
+            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
+        </div>
+        <div class="flex items-center justify-between">
+            <span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="../js/script.js?v=1.0"></script>
+
+
 </body>
 
 </html>
