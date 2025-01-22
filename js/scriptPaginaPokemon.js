@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(currentUrl); // Muestra la URL completa en la consola
     const urlP = new URL(currentUrl);
     const searchPokemon = urlP.search;
-    const idPokemon = searchPokemon[4];
+    const idPokemon = searchPokemon.split("=")[1];
 
     async function obtenerPokemon(id) {
         try {
             let pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
             let resultado = await pokemon.json();
-            // console.log(resultado.forms[0].name);
+            console.log(resultado.forms[0].name);
             return resultado;
         } catch (error) {
             console.log("Error en la obtencion del pokemon", error);
