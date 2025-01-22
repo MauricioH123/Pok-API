@@ -8,6 +8,7 @@
     <link rel="icon" href="../img/image.png" type="image/png">
     <link rel="stylesheet" href="../css/output.css">
     <script src="../node_modules/flowbite/dist/flowbite.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body class="bg-gray-100">
@@ -88,6 +89,7 @@
     </section>
 
 
+        
 
     <div class="flex flex-wrap justify-center lg:justify-between mt-8 mx-auto max-w-7xl px-4">
         <!-- Tarjeta -->
@@ -99,23 +101,36 @@
                 <a href="#">
                     <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" id="nombrePokemon"></h5>
                 </a>
-                <p class="font-normal text-gray-700 dark:text-gray-400" id="parrafoPokemon">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <p class="font-normal text-gray-700 dark:text-gray-400" id="parrafoPokemon">Estadisticas</p>
             </div>
         </div>
-    
+
         <!-- Sección adicional -->
-        <div class="max-w-md bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-600 p-5 ml-4">
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Sección Adicional</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">Esta sección puede contener información adicional, enlaces o cualquier contenido relacionado.</p>
-            <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300">
-                <li>Contenido relacionado 1</li>
-                <li>Contenido relacionado 2</li>
-                <li>Contenido relacionado 3</li>
-            </ul>
+        <div
+            class="max-w-md bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-600 p-5 ml-4">
+
+            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+                <div class="flex justify-between pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center">
+                        <div>
+                            <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1">Estadisticas
+                            </h5>
+                            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Estas son las estadisticas
+                                basicas del pokemon</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="column-chart"></div>
+                <div
+                    class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+                </div>
+            </div>
+
         </div>
     </div>
-    
-    
+
+
 
 
 
