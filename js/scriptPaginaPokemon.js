@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    function ucfirst(str){
+      return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
     async function obtenerAtributos(id){
         const jsonResultados = await obtenerPokemon(id);
         const estadisticas = jsonResultados.stats;
@@ -135,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const parrafoPokemon = document.querySelector("#parrafoPokemon");
         const imagenPokemon = document.querySelector("#imagenPokemon");
         
-        nombrePokemon.textContent = `${jsonDetalles.forms[0].name}`;
+        nombrePokemon.textContent = `${ucfirst(jsonDetalles.forms[0].name)}`;
         parrafoPokemon.textContent = `detalles del pokemon`;
         imagenPokemon.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
     }
