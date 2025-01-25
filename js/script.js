@@ -1,32 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    function buscarPokemon() {
-        document.getElementById("buscar").addEventListener("click", async () => {
-            const pokemonName = document.getElementById("nombre").value.toLowerCase();
-            const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
-
-            try {
-                console.log(`Fetching URL: ${url}`);
-                let response = await fetch(url);
-
-                if (!response.ok) {
-                    throw new Error(`Pokemon no encontrado: ${response.status}`);
-                }
-
-                let data = await response.json();
-                console.log(data.name.toUpperCase());
-                alert(`Nombre del Pokémon: ${data.name.toUpperCase()}`);
-
-                let abilitiesList = data.abilities.map(ability => ability.ability.name);
-                alert(`Habilidades del Pokémon: ${abilitiesList.join(', ')}`);
-
-            } catch (error) {
-                console.error(error);
-                alert(`Error: ${error.message}`);
-            }
-        });
-
+    async function todoPokemon() {
+        let consulta = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1304");
+        const resultado = await consulta.json();
+        return resultado.results;
     }
+
+    async function buscarPokemon() {
+
+        const input = document.getElementById("nombre");
+        const output = document.getElementById('output');
+        const jsonPokemon = await todoPokemon();
+        input.addEventListener("input", (event) => {
+
+            
+            let nombreBuscado = event.target.value;
+            const resultado = jsonPokemon.filter(item => item.name.toLowerCase().includes(nombreBuscado.toLowerCase()));
+            console.log(resultado);
+
+
+        })
+    }
+        // document.getElementById("buscar").addEventListener("click", async () => {
+        //     const pokemonName = document.getElementById("nombre").value.toLowerCase();
+        //     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+
+        //     try {
+        //         console.log(`Fetching URL: ${url}`);
+        //         let response = await fetch(url);
+
+        //         if (!response.ok) {
+        //             throw new Error(`Pokemon no encontrado: ${response.status}`);
+        //         }
+
+        //         let data = await response.json();
+        //         console.log(data.name.toUpperCase());
+        //         alert(`Nombre del Pokémon: ${data.name.toUpperCase()}`);
+
+        //         let abilitiesList = data.abilities.map(ability => ability.ability.name);
+        //         alert(`Habilidades del Pokémon: ${abilitiesList.join(', ')}`);
+
+        //     } catch (error) {
+        //         console.error(error);
+        //         alert(`Error: ${error.message}`);
+        //     }
+        // });
+
 
     buscarPokemon();
 
@@ -192,6 +211,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
 
     // crearTarjetas()
+
+
 
     function ucfirst(str){
         return str.charAt(0).toUpperCase() + str.slice(1);

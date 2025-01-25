@@ -78,15 +78,22 @@
                         </svg>
                     </div>
                     <input type="search" id="nombre"
-                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    list="pokemones"class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Buscar Pokemon" required />
+                        <datalist id="pokemones">
+                            <option value="Opción 1">
+                            <option value="Opción 2">
+                            <option value="Opción 3">
+                            <option value="Opción 4">
+                        </datalist>
                     <button type="submit" id="buscar"
                         class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
                 </div>
             </form>
+            <p>Texto ingresado lore: <span id="output"></span></p>
         </div>
     </section>
-
+    
     <!-- Card Section -->
     <div class="flex flex-wrap justify-center gap-4 p-4" id="contenedor">
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -122,8 +129,6 @@
     </div>
 
 
-
-
     <script>
         // Toggle mobile menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -133,7 +138,7 @@
             mobileMenu.classList.toggle('hidden');
         });
     </script>
-    <script src="./js/script.js?v=4.0"></script>
+    <script src="./js/script.js?v=5.0"></script>
 </body>
 
 </html>
