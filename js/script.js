@@ -9,14 +9,20 @@ document.addEventListener("DOMContentLoaded", function () {
     async function buscarPokemon() {
 
         const input = document.getElementById("nombre");
-        const output = document.getElementById('output');
+        const datalist  = document.getElementById('pokemones');
         const jsonPokemon = await todoPokemon();
-        input.addEventListener("input", (event) => {
 
-            
-            let nombreBuscado = event.target.value;
-            const resultado = jsonPokemon.filter(item => item.name.toLowerCase().includes(nombreBuscado.toLowerCase()));
-            console.log(resultado);
+        input.addEventListener("input", (event) => {
+            let nombreBuscado = event.target.value.toLowerCase();
+            const resultado = jsonPokemon.filter(item => item.name.toLowerCase().includes(nombreBuscado));
+            // console.log(resultado);
+            datalist.innerHTML = "";
+
+            resultado.forEach(pokemon => {
+                const option = document.createElement("option");
+                option.value = pokemon.name;
+                datalist.appendChild(option);
+            })
 
 
         })
