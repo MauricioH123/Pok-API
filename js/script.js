@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     async function buscarPokemon() {
 
         const input = document.getElementById("nombre");
-        const datalist  = document.getElementById('pokemones');
+        const datalist = document.getElementById('pokemones');
+        const formulario = document.getElementById("formularioBusqueda");
         const jsonPokemon = await todoPokemon();
 
         input.addEventListener("input", (event) => {
@@ -22,35 +23,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 const option = document.createElement("option");
                 option.value = pokemon.name;
                 datalist.appendChild(option);
-            })
+            });
+        });
+
+        formulario.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const nombrePokemon = input.value.trim().toLowerCase();
+
+            if(nombrePokemon){
+                const pokemonEncontrado = jsonPokemon.find(pokemon => pokemon.name === nombrePokemon);
+
+                if(pokemonEncontrado){
+                    const urlPokemon = pokemonEncontrado.url;
+                    const idPokemon = urlPokemon.split("/").slice(-2, -1)[0];
+
+                    window.location.href =`./views/detallePokemon.html?id=${idPokemon}`;
+                }else{
+                    alert("Pokémon no encontrado. Intenta con otro nombre.");
+                }
+            }else{
+                alert("Por favor, ingresa el nombre de un Pokémon.");
+            }
+        });
 
 
-        })
     }
-        // document.getElementById("buscar").addEventListener("click", async () => {
-        //     const pokemonName = document.getElementById("nombre").value.toLowerCase();
-        //     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
-
-        //     try {
-        //         console.log(`Fetching URL: ${url}`);
-        //         let response = await fetch(url);
-
-        //         if (!response.ok) {
-        //             throw new Error(`Pokemon no encontrado: ${response.status}`);
-        //         }
-
-        //         let data = await response.json();
-        //         console.log(data.name.toUpperCase());
-        //         alert(`Nombre del Pokémon: ${data.name.toUpperCase()}`);
-
-        //         let abilitiesList = data.abilities.map(ability => ability.ability.name);
-        //         alert(`Habilidades del Pokémon: ${abilitiesList.join(', ')}`);
-
-        //     } catch (error) {
-        //         console.error(error);
-        //         alert(`Error: ${error.message}`);
-        //     }
-        // });
 
 
     buscarPokemon();
@@ -60,28 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const contenedor = document.getElementById("contenedor");
     const tarjetaOriginal = document.getElementById("tarjetaPokemon");
     const paginaNav = document.getElementById("paginaNav");
-
-    // async function todosPokemones(){
-    //     try {
-    //         // Fetch principal para obtener la lista de pokédex
-    //         const datos = await fetch(`https://pokeapi.co/api/v2/pokedex`);
-    //         const respuestas = await datos.json();
-
-    //         // Obtener la URL de la primera Pokédex
-    //         const url = respuestas.results[0].url;
-    //         const pokemones = await fetch(url);
-    //         const respuestaN = await pokemones.json();
-
-    //         // Crear el array de nombres de Pokémon
-    //         const nombreP = respuestaN.pokemon_entries.map(entry => entry.pokemon_species.name);
-
-    //         return nombreP; // Devolver el array de nombres
-    //     } catch (error) {
-    //         console.error("Error al obtener los datos:", error);
-    //         return []; // En caso de error, devolver un array vacío
-    //     }
-
-    // }
 
     const totalPokemones = 1118;  // Total de Pokémon en la Pokédex
     const totalPaginas = Math.ceil(totalPokemones / pokemonesPorPagina); // Calcular el número total de páginas
@@ -189,35 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Inicializar las tarjetas y la paginación en la primera página
     crearTarjetas(paginaActual);
-
-    // async function crearTarjetas(){
-    //     try{
-    //         const nombres = await todosPokemones();
-
-    //         nombres.forEach((nombre, index )=> {
-
-    //             const nuevaTarjeta = trajetaOriginal.cloneNode(true);
-
-    //             nuevaTarjeta.id = `tarjetaPokemon-${index + 1}`;
-    //             const titulo = nuevaTarjeta.querySelector("#nombreP");
-    //             const texto = nuevaTarjeta.querySelector("#textoP");
-    //             const imagen = nuevaTarjeta.querySelector("#imagenP");
-
-    //             titulo.textContent = `${nombre}`;
-    //             texto.textContent  = `Este es el Pokémon: ${nombre}.`;
-    //             imagen.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`; // Ejemplo de imagen desde PokeAPI
-
-    //             contenedor.appendChild(nuevaTarjeta);
-    //         });
-
-    //     }catch(error){
-    //         console.error("Error al crear tarjetas:", error);
-    //     }
-
-    // }
-
-    // crearTarjetas()
-
 
 
     function ucfirst(str){
